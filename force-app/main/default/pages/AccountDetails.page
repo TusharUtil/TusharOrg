@@ -1,0 +1,37 @@
+<apex:page showHeader="false" controller="accountVFController">
+    <apex:form >
+    	<h1>Account Details</h1>
+        
+        <apex:pageBlock title="Account Records" >
+        	<apex:pageBlockTable value="{!records}" var="acc">
+            	<apex:column value="{!acc.Name}" headerValue="Account Name"/>
+            	<apex:column value="{!acc.Industry}" headerValue="Industry"/>
+                <apex:column value="{!acc.Website}" headerValue="Website"/>
+                <apex:column value="{!acc.Phone}" headerValue="Phone"/>
+                <apex:column value="{!acc.Description}" headerValue="Description"/>
+            
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        
+   <!-- <table border="1">
+        <tr>
+        	<th>Account Name</th>
+            <th>Website</th>
+            <th>Phone</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+        	<td>{!Account.Name}</td>
+            <td>{!Account.Website}</td>
+            <td>{!Account.Phone}</td>
+            <td>{!Account.Description}</td>
+        </tr>
+    </table>  
+        
+        <apex:commandbutton action="{!save}" value="save" id="savebutton"/>
+        <apex:commandbutton action="{!cancel}" value="cancel" id="cancelbutton"/> -->
+    
+    
+    </apex:form>
+</apex:page>

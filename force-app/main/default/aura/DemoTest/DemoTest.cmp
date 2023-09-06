@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="record" type="Account" />
+    
+    <!-- Your component code here -->
+	<force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      fields="Name,Field1__c,Field2__c"
+                      targetFields="{!v.record}"
+                      recordUpdated="{!c.handleRecordUpdated}" />
+</aura:component>

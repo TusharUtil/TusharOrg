@@ -1,0 +1,25 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<!--Declare Attribute-->
+    <aura:attribute name="currentDate" type="Date"/>
+    <aura:attribute name="formattedDate" type="String"/>
+     
+    <!--Declare Handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+     
+    <!--Component Start-->
+    <div class="slds-m-around_xx-large">
+        <lightning:formattedDateTime aura:id="dt"
+                                     value="{!v.currentDate}"
+                                     
+                                     day="numeric"
+                                     
+                                     hour="2-digit"
+                                     minute="2-digit"
+                                     
+                                     hour12="true"
+                                     timeZone="{!$Locale.timezone}"/>
+    </div>
+    
+     <div>{!v.formattedDate}</div>
+    <!--Component End-->
+</aura:component>

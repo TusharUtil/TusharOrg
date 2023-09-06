@@ -1,0 +1,16 @@
+<aura:component controller="AccountListController">
+    <aura:attribute name="games" type="String[]" default="['Cricket','Football','Tennis','kabaddi']"/>
+    <aura:attribute name="accList" type="Account"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <h1>List Of Accounts</h1>
+    <aura:iteration items="{!v.accList}" var="acc">
+        <ul>
+            Name : {!acc.Name} <br/>
+            Phone : {!acc.Phone} <br/>
+            Industry : {!acc.Industry} <br/> <hr/>
+        </ul>
+    </aura:iteration>
+
+</aura:component>	

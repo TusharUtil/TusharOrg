@@ -1,0 +1,33 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="optionsSF" type="List" default="[
+                                                          {'label': 'Sales', 'value': 'Sales'},
+                                                          {'label': 'Force', 'value': 'Force'}
+                                                          ]"/>
+    <aura:attribute name="optionsUL" type="List" default="[
+                                                          {'label': 'Utilitarian', 'value': 'Utilitarian'},
+                                                          {'label': 'Labs', 'value': 'Labs'}
+                                                          ]"/>
+    <aura:attribute name="valueSF" type="String" default="option1"/>
+    <aura:attribute name="valueUL" type="String" default="option1"/>
+    
+    <lightning:radioGroup name="radioGroup"
+                          label="Parent"
+                          options="{! v.optionsSF }"
+                          value="{! v.valueSF }"
+                          type="radio"/>
+    
+    <lightning:radioGroup name="radioGroup"
+                          label="Child"
+                          options="{! v.optionsUL }"
+                          value="{! v.valueUL }"
+                          type="radio"/>
+    
+    <aura:if isTrue="{!AND(v.valueSF == 'Sales',v.valueUL == 'Utilitarian')}">
+      		<h4>Hello ,How are U today!!!!!!!!!</h4>
+    </aura:if>
+    
+    <aura:if isTrue="{!AND(v.valueSF == 'Force',v.valueUL == 'Labs')}">
+      		<h4>Now or Never ,Do it any how!!!!!!!!!</h4>
+    </aura:if>
+    
+</aura:component>

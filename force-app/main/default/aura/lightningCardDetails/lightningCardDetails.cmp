@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<div class="container">
+        <lightning:card title="My Card" >
+            <aura:set attribute="actions">
+                <lightning:button label="Click to Show Details" onclick="{!c.showDetails}"/>
+            </aura:set>
+            <aura:set attribute="footer">
+                <aura:if isTrue="{!v.showDetails}">
+                    <!-- Show the details here -->
+                    <p>Details go here...</p>
+                </aura:if>
+            </aura:set>
+        </lightning:card>
+    </div>
+</aura:component>

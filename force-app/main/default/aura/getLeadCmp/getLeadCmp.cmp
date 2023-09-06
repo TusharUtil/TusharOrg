@@ -1,0 +1,34 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller="GetLeadController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.getLeadData}" />
+    <aura:attribute name="getLeadList" type="List"/>
+    <div class="slds">
+    	<table class="slds-table slds-table--bordered slds-table--striped">
+        	<thead>
+            	<tr>
+                	<th scope="col"><span class="slds-truncate">ID</span></th>
+                    <th scope="col"><span class="slds-truncate">Name</span></th>
+                    <th scope="col"><span class="slds-truncate">Phone</span></th>
+                    <th scope="col"><span class="slds-truncate">Company</span></th>
+                    <th scopr="col"><span class="slds-truncate">Status</span></th>
+                    <th scopr="col"><span class="slds-truncate">Rating</span></th>
+                </tr>            
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.getLeadList}" var="ld">
+            			<tr>
+                    		<td>{!ld.Id}</td>
+                            <td>{!ld.Name}</td>
+                            <td>{!ld.Phone}</td>
+                            <td>{!ld.Company}</td>
+                            <td>{!ld.Status}</td>
+                            <td>{!ld.Rating}</td> 
+                        </tr>
+                </aura:iteration>      
+            </tbody>
+        </table>
+    </div>
+	
+</aura:component>

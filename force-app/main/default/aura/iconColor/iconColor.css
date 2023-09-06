@@ -1,0 +1,30 @@
+/* ---for action icon 1--- */
+.THIS.redOnYellow svg {
+    fill : red;
+}
+.THIS.redOnYellow {
+   background-color:yellow !important;
+}
+
+/* ---for custom icon 2--- */
+.THIS.orangeOnYellow svg{
+    fill:orange !important;
+}
+
+.THIS.orangeOnYellow {
+    background-color:yellow !important;
+}
+
+/* ---for standard icon 3--- */
+.THIS.blackOnRed svg{
+    fill:black !important;
+}
+
+.THIS.blackOnRed {
+    background-color:IndianRed !important;
+}
+
+/* ---for utility icon 4--- */
+.THIS.black svg{
+    fill: gold;
+}

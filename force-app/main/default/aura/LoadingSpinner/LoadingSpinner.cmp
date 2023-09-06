@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller="AccountController">
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:donewaiting" action="{!c.hideSpinner}"/>
+    
+    <aura:attribute name="spinner" type="boolean" default="false"/>
+    <aura:attribute name="accListToDisplay" type="Account[]" />
+    
+    <aura:if isTrue="{!v.spinner}">
+    	<div aura:id="spinnerId" class="slds-spinner_container">
+        	<div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <ui:button label="Fetch Accounts" class="slds-button slds-button--neutral" press="{!c.getAccounts}"></ui:button>
+    <h3>Account List</h3>
+    <table>
+    	<thead>
+			<tr>
+            	<th>ID</th>
+                <th>Name</th>
+                <th>BillingState</th>
+                <th>Website</th>
+                <th>Phone</th>
+           </tr>   
+        </thead>
+        <tbody>
+            
+        </tbody>
+    
+    
+    
+    </table>
+    
+    
+</aura:component>

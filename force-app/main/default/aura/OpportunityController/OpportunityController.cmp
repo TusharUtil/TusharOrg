@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="OpportunityController">
+    <aura:attribute type="Opportunity[]" name="opppList"/>
+    <aura:attribute type="List" name="mycolumns"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchOpp}"/>
+    
+    <lightning:datatable data="{!v.opppList}" 
+                         columns="{!v.mycolumns}" 
+                         keyField="id" 
+                         hideCheckboxColumn="true"
+                         showRowNumberColumn="true"
+                         sortedBy="{!v.sortedBy}"
+                         sortedDirection="{!v.sortedDirection}"
+                         onsort="{!c.handleSort}"/>
+</aura:component>

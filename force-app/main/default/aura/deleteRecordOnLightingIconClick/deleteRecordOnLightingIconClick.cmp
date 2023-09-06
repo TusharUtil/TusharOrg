@@ -1,0 +1,41 @@
+<aura:component controller="deleteAccount" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <aura:attribute name="Acclist"  type="list"/>
+    <div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate" title="AccountId">Accoount Id</div>
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate" title="Account Name">Account Name</div>
+                    </th>
+                    
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate" title="Edit">Delete</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.Acclist}" var="item" >
+                    <tr class="slds-hint-parent">
+                        <th data-label="Opportunity Name" scope="row">
+                            <div class="slds-truncate" title="Id">
+                                <a href="javascript:void(0);" tabindex="-1">{!item.Id}</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="{!item.Name}">{!item.Name}</div>
+                        </td>
+                        
+                        <td data-label="icon" class="slds-col slds-size_1-of-12" onclick="{!c.delete}" id="{!item.Id}">
+                            <lightning:icon iconName="utility:delete" size="small" />
+                        </td>
+                        
+                        
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

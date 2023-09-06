@@ -1,0 +1,16 @@
+<aura:component controller="ManualpaymentController5" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="fileName" type="String" default="No File Selected..." />
+    <aura:attribute name="fileParentId" type="integer" />
+    
+    <lightning:input aura:id="fileuplod" onchange="{!c.handleFilesChange}" type="file"
+                     accept="image/png, .png, ,jpg, image/jpeg, image/jpg , application/pdf" label="Upload Attachment"
+                     multiple="false" required="true" />
+    <div class="slds-text-body_small slds-text-color_success"> {!v.fileName} </div>
+    <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+        <!-- <div class="forceChangeRecordTypeFooter"> style="width: 110%;padding: 10px; margin-left: -29px;" -->
+        <ui:button class="slds-button slds-float_left  slds-button_neutral" label="Cancel" press="{! c.cancelFile}" />
+        <ui:button class="slds-button slds-button--brand" label="Save" press="{!c.Save}" disabled="{!v.disableSave}" />
+        <!-- </div> -->
+    </div>
+</aura:component>

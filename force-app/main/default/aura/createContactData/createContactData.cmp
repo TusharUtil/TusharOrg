@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable" access="global" >
+    <aura:attribute name="fields" type="String[]" default="['FirstName','LastName','Email','Phone']"/>
+    <lightning:recordForm objectApiName="Contact" fields="{!v.fields}" onsuccess="{!c.recordCreatedSuccess}">
+    </lightning:recordForm>
+</aura:component>

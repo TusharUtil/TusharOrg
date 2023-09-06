@@ -1,0 +1,25 @@
+<apex:page standardController="Account">
+    <apex:form >
+         <table border="1">
+             <caption><b>Account Details</b> </caption>
+            <tr>
+                <th><label for="accName">Account Name</label></th>
+                <th><label for="accPhone">Phone</label></th>
+                <th><label for="accIndustry">Industry</label></th>
+                <th><label for="accWebsite">Website</label></th>
+                <th><label for="accDescription">Description</label></th>
+            </tr>
+            <tr>
+                <td><input type="text" id="accName" name="accName" value=""/></td>
+                <td><input type="tel" id="accPhone" name="accPhone" value=""/></td>
+                <td><input type="text" id="accIndustry" name="accIndustry" value=""/></td>
+                <td><input type="url" id="accWebsite" name="accWebsite" value=""/></td>          
+                <td><input type="text" id="accDescription" name="accDescription" value=""/></td>
+            </tr>
+        </table>  
+        
+        <input type="submit" value="Submit"/>
+        <input type="reset"/>
+        <input type="submit" value="Cancel"/>
+    </apex:form>
+</apex:page>

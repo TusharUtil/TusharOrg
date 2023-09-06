@@ -1,0 +1,17 @@
+<aura:component controller="FileUploadToController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    >
+    
+    <aura:attribute name="AccountName" type="String" />
+    <aura:attribute name="fileName" type="String" default="No File Selected.." />
+    <aura:attribute name="returnFileName" type="String" />
+    
+    <!--<lightning:input type="text" placeholder="Enter First Name" aura:Id="accname" onblur="{!c.accname}" />-->
+  
+    <div>
+        <lightning:input aura:id="fileId" onchange="{!c.handleFilesChange}" type="file" name="file" multiple="false" style="display:flex"/><br/>
+        
+        <div class="slds-text-body_small slds-box" style="color:red;width: 200px;height: 23px">{!v.fileName} </div><br/>
+    </div>
+    
+    <button class="slds-button slds-button_brand" onclick="{!c.doSave}">Upload Attachment</button>
+</aura:component>

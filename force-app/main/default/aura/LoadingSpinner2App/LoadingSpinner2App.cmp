@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+    
+    <div class="slds-m-around_xx-large">
+    
+		<lightning:button variant="brand" label="Loading Start" title="Loading Start" onclick="{!c.startLoader}" />
+        <lightning:button variant="brand" label="Loading End" title="Loading End" onclick="{!c.stopLoader}" />
+    
+    
+    </div>
+	
+</aura:component>

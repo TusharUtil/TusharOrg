@@ -1,0 +1,27 @@
+<aura:component controller="GetContactController">
+    <aura:handler name="init" value="{!this}" action="{!c.getContactData}" />
+    <aura:attribute name="getConList" type="List"/>
+   <div class="slds">  
+    <table class="slds-table slds-table--bordered slds-table--striped">
+        <thead>
+            <tr>
+                <th scope="col"><span class="slds-truncate">ID</span></th>
+                <th scope="col"><span class="slds-truncate">Name</span></th>
+                <th scope="col"><span class="slds-truncate">Email</span></th>
+                <th scope="col"><span class="slds-truncate">Phone</span></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+             <aura:iteration items="{!v.getConList}" var="con">
+            <tr>
+                <td>{!con.Id}</td>
+                <td>{!con.Name}</td>
+                <td>{!con.Email}</td>
+                <td>{!con.Phone}</td>
+            </tr>
+             </aura:iteration>    
+        </tbody>
+    </table>
+  </div>
+</aura:component>

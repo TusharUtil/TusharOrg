@@ -1,0 +1,37 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selectedStep" type="string" default="Step 1"/>
+    	<lightning:progressIndicator currentStep="{!v.selectedStep}" type="path">
+            <lightning:progressStep label="Step One" value="Step 1" onclick="{!c.selectStep1}"/>
+            <lightning:progressStep label="Step Two" value="Step 2" onclick="{!c.selectStep2}"/>
+            <lightning:progressStep label="Step Three" value="Step 3" onclick="{!c.selectStep3}"/>
+            <lightning:progressStep label="Step Four" value="Step 4" onclick="{!c.selectStep4}"/>
+            <lightning:progressStep label="Step Five" value="Step 5" onclick="{!c.selectStep5}"/>
+    	</lightning:progressIndicator>
+    
+    	<div class="slds-p-around--medium">
+    		<div class="{!v.selectedStep == 'Step 1' ? 'slds-show' : 'slds-hide'}">
+            	<p><b>Step 1</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'Step 2' ? 'slds-show' : 'slds-hide'}">
+            	<p><b>Step 2</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'Step 3' ? 'slds-show' : 'slds-hide'}">
+            	<p><b>Step 3</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'Step 4' ? 'slds-show' : 'slds-hide'}">
+            	<p><b>Step 4</b></p>
+            </div>
+            <div class="{!v.selectedStep == 'Step 5' ? 'slds-show' : 'slds-hide'}">
+            	<p><b>Step 5</b></p>
+            </div>
+    	</div>
+   		 <div>
+    		<button disabled="{!v.selectedStep != 'Step 1' ? '' : 'disabled'}" class="slds-button slds-button--neutral" onclick="{!c.handlePrev}">Back</button> 
+            <aura:if isTrue="{!v.selectedStep != 'Step 5'}">
+                <button class="slds-button slds-button--brand" onclick="{!c.handleNext}">Next</button>
+            </aura:if>
+            <aura:if isTrue="{!v.selectedStep == 'Step 5'}">   
+                <button class="slds-button slds-button--brand" onclick="{!c.handleFinish}">Finish</button>  
+            </aura:if>
+    	</div>
+</aura:component>

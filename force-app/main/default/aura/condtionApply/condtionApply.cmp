@@ -1,0 +1,24 @@
+<aura:component>
+    <aura:attribute name="flag" type="boolean" default="false"/>
+    <aura:attribute name="flagHeader" type="boolean" default="false"/>
+
+    Enter a Number : <ui:inputText aura:id="inputCmp"/>
+
+    <aura:if isTrue="{!v.flagHeader}">
+        <Aura:if isTrue="{!v.flag}">
+            <div>
+                Value is Greater than or equals to 50
+            </div>
+            <aura:set attribute="else">
+                <div>
+                    Value is less than 50
+                </div>
+            </aura:set>
+        </Aura:if>
+
+
+    </aura:if>
+    
+
+    <lightning:button label="ClickMe" onclick="{!c.doAction}"/>
+</aura:component>	

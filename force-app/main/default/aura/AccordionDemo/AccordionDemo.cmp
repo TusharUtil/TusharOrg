@@ -1,0 +1,24 @@
+<aura:component controller="AccordionController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="cList" type="List"/>
+    <lightning:card title="Accordion With Aura Iteration">
+        <div class="slds-m-around_x-large">
+            <lightning:accordion>
+                <aura:iteration items="{!v.cList}" var="con">
+                    <lightning:accordionSection name="{!con.name}" label="{!con.Name}">
+                        <aura:set attribute="body">
+                            <p><b>Street</b> : {!con.MailingStreet}</p>
+                            <p><b>City</b> : {!con.MailingCity}</p>
+                            <p><b>State</b> : {!con.MailingState}</p>
+                            <p><b>Postal Code</b> : {!con.MailingPostalCode}</p>
+                            <p><b>Country</b> : {!con.MailingCountry}</p>
+                            <p><b>Email</b> : {!con.Email}</p>
+                            <p><b>Phone</b> : {!con.Phone}</p>
+                        </aura:set>
+                    </lightning:accordionSection>
+                </aura:iteration>
+            </lightning:accordion>
+        </div>
+   </lightning:card>
+</aura:component>

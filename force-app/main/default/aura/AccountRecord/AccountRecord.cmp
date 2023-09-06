@@ -1,0 +1,6 @@
+<aura:component>
+    <aura:attribute name="accountRecord" type="Account"/>
+    <div class="slds-card slds-p-bottom_medium">
+        <p>{!v.accountRecord.Name}</p>
+    </div>
+</aura:component>

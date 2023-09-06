@@ -1,0 +1,93 @@
+<aura:component controller="customRecordSearch" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="isSearchDisabled" type="Boolean" default="true"/>
+    <aura:attribute name="isShowData" type="Boolean" default="false"/>
+    <aura:attribute name="mobileNo" type="String"/>
+    <aura:attribute name="panNo" type="String"/>
+    <aura:attribute name="dataList" type="Object"/>
+    
+    <lightning:card>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <span class="slds-icon_container slds-icon-standard-account" title="account">   
+                        <lightning:icon class="redOnYellow" iconName="action:new_account" size="small"/>
+                        <span class="slds-assistive-text">account</span>
+                    </span>  
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Customer Search">Account Search</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <p class="slds-page-header__name-meta">Existing Account</p>
+                    </div>
+                </header>
+            </div>
+           
+            <div class="slds-card__body slds-card__body_inner">
+                <lightning:input type="text" name="input1" class="inputbox" label="PAN:" aura:id='txtPan' value='' max="10" onchange="{!c.checkLength}" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" messageWhenPatternMismatch="Please enter 10 digits valid PAN. Ex. BMDPD7845P" validity="true"/>                   
+                <br/>
+                <lightning:input type="text" name="input2" class="inputbox" label="MOBILE NUMBER:" aura:id="txtMobile"  value='' max="10" onchange="{!c.checkLength}" pattern="[0-9]{10}" messageWhenPatternMismatch="Please enter 10 digits valid Mobile Number" validity ="true"/>
+                
+            </div>
+            
+            <footer class="slds-card__footer slds-text-align_center">
+                <lightning:button label="Search" disabled ="{!v.isSearchDisabled}" class="slds-button slds-m-top--medium slds-button_brand" onclick="{!c.SearchClick}"/>
+            </footer>
+        </article>
+    </lightning:card>   
+    <aura:if isTrue="{!v.isShowData}">
+    	<lightning:card>
+            <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer">
+                <thead>
+                	<tr class="slds-text-title--caps">
+                    	 <th class="slds-is-sortable slds-text-title--caps" scope="col">
+                            <span class="slds-truncate" title="Name">ID</span>  
+                        </th>
+                        
+                        <th class="slds-is-sortable slds-text-title--caps" scope="col">
+                            <span class="slds-truncate" title="Last Name">Name</span>
+                        </th>
+                        
+                        <th class="slds-is-sortable slds-text-title--caps" scope="col">
+                            <span class="slds-truncate" title="Department">Rating</span>
+                        </th>
+                        <th class="slds-is-sortable slds-text-title--caps" scope="col">
+                            <span class="slds-truncate" title="Department">Mobile No</span>
+                        </th>
+                        <th class="slds-is-sortable slds-text-title--caps" scope="col">
+                            <span class="slds-truncate" title="Department">Pan Number</span>
+                        </th>
+                    </tr>                
+                </thead>
+                <tbody>
+                	<aura:iteration items="{!v.dataList}" var="RecAcc">
+                    	<tr>
+                        	<th scope="row">
+                                <div class="slds-truncate" title="{!RecAcc.Id}">{!RecAcc.Id}</div>
+                            </th>
+                            
+                            <th scope="row">
+                                <div class="slds-truncate" title="{!RecAcc.Name}">{!RecAcc.Name}</div>
+                            </th>
+                            
+                            <th scope="row">
+                                <div class="slds-truncate" title="{!RecAcc.Rating}">{!RecAcc.Rating}</div>
+                            </th>
+                            <th scope="row">
+                                <div class="slds-truncate" title="{!RecAcc.Mobile_Number__c}">{!RecAcc.Mobile_Number__c}</div>
+                            </th>
+                            <th scope="row">
+                                <div class="slds-truncate" title="{!RecAcc.PAN_Number__c}">{!RecAcc.Pan_Number__c}</div>
+                                
+                            </th>
+                        </tr>
+                   </aura:iteration>
+                </tbody>
+            </table> 
+             <lightning:button label="Reset" class="slds-button slds-m-top--medium slds-button_brand" onclick="{!c.Reset}"/>
+        </lightning:card>
+    </aura:if>
+</aura:component>

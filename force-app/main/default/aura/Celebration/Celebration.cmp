@@ -1,0 +1,33 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <ltng:require scripts="{!$Resource.Celebration}"/>
+    <lightning:card title="Just Celebrate">
+        <center>
+            <lightning:button variant="brand" 
+                              class="buttonBox" 
+                              label="Basic" 
+                              onclick="{!c.basic}"/> 
+            
+            <lightning:button variant="brand" 
+                              class="buttonBox" 
+                              label="Fireworks" 
+                              onclick="{!c.fireworks}"/>
+            
+            <lightning:button variant="brand" 
+                              class="buttonBox" 
+                              label="Shower" 
+                              onclick="{!c.shower}"/>
+            
+            <lightning:button variant="brand" 
+                              class="buttonBox" 
+                              label="Celebration" 
+                              onclick="{!c.celebration}"/>
+            
+            <lightning:button variant="brand" 
+                              class="buttonBox" 
+                              label="Burst" 
+                              onclick="{!c.burst}"/>
+            
+            
+        </center>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,38 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selTabId" type="string" default="1" />
+    <lightning:card footer="Card Footer" title="Lightning Tabs With Next And Back Button">
+        <lightning:tabset selectedTabId="{!v.selTabId}">
+            <lightning:tab label="Account" id="1">
+                Account Dummy Data........
+            </lightning:tab>
+            <lightning:tab label="Contact" id="2">
+                Contact Dummy Data........
+            </lightning:tab>
+            <lightning:tab label="Lead" id="3">
+                Lead Dummy Data........
+            </lightning:tab>
+            <lightning:tab label="Opportunity" id="4">
+                Opportunity Dummy Data........
+            </lightning:tab>
+            <lightning:tab label="Case" id="5">
+                Case Dummy Data........
+            </lightning:tab>
+            <lightning:tab label="Report" id="6">
+                <p>Monthly Report</p>
+                <p>Quaterly Report</p>
+                <p>Half yearly Report</p>
+                <p>Annual Report</p>
+            </lightning:tab>
+        </lightning:tabset>
+        
+        <div class="slds-clearfix">
+            <div class="slds-float_left">
+                <lightning:button disabled="{!v.selTabId =='1'}" variant="brand" label="Back" onclick="{!c.back}" />
+            </div>
+            <div class="slds-float_right">
+                <lightning:button disabled="{!v.selTabId =='6'}" variant="brand" label="Next" onclick="{!c.next}" />
+            </div>   
+        </div>
+        
+    </lightning:card>
+</aura:component>

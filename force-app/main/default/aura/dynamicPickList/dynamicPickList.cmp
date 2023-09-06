@@ -1,0 +1,37 @@
+<aura:component controller="dynamcPickListController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="fieldMap" type="Map"/>
+    <aura:attribute name="lead" type="Lead" default="{'sobjectType':'Lead', 
+                                                       'LastName': '',
+                                                       'Company': '',
+                                                       'Email': '',
+                                                       'Phone': '', 
+                                                       'Industry': ''}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-m-around--xx-large">
+    	 <div class="form-group">
+                <lightning:input name="Name" type="text" label="Lead Name" value="{!v.lead.LastName}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="Company" type="text" label="Company" value="{!v.lead.Company}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="Email" type="email" label="Email" value="{!v.lead.Email}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="Phone" type="phone" label="Phone" value="{!v.lead.Phone}" />
+            </div>
+        	<div class="form-group">
+        		<lightning:select aura:id="industryPicklist" value="{!v.lead.Industry}" onchange="{!c.handleOnChange}" name="industryPicklist" label="Industry" required="true">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.lead.Industry}" />
+                    </aura:iteration>
+                </lightning:select>
+       	    </div>
+         	<br/>
+        	<lightning:button variant="brand" label="Submit" onclick="{!c.LeadSave}" /> 
+    </div>
+</aura:component>

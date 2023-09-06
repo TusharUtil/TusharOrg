@@ -1,0 +1,68 @@
+<aura:component controller="myAccConController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="fieldMap" type="Map"/>
+    <aura:attribute name="account" type="Account" default="{'sobjectType':'Account', 
+                                                           'Name': '',
+                                                           'Number of Employee': '',
+                                                           'Source': '',
+                                                           'Rating': '',
+                                                           'Type': '',
+                                                           'Website': '',
+                                                           'isActive': '',
+                                                           'Industry': ''}"/>
+    
+    
+    <aura:attribute name="contactFName" type="String"/>
+    <aura:attribute name="contactLName" type="String"/>
+    <aura:attribute name="contactPhone" type="String"/>
+    <aura:attribute name="contactEmail" type="String"/>
+    
+    <lightning:card title="Account Details">
+        <form>           
+            <lightning:input type="text" name="name" label="Account Name" required="true" value="{!v.account.Name}"/>
+            <lightning:input type="number" name="employees" label="Number of Employees" required="true" value="{!v.account.NumberOfEmployees}"/>
+            <lightning:select aura:id="sourcePicklist" value="{!v.account.Source}" onchange="{!c.handleSource}" name="sourcePicklist" label="Source" required="true">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.account.AccountSource}" />
+                    </aura:iteration>
+             </lightning:select>
+            
+            <lightning:select aura:id="industryPicklist" value="{!v.account.Industry}" onchange="{!c.handleIndustry}" name="industryPicklist" label="Industry" required="true">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.account.Industry}" />
+                    </aura:iteration>
+             </lightning:select>
+            
+            <lightning:select aura:id="ratingPicklist" value="{!v.account.Rating}" onchange="{!c.handleRating}" name="ratingPicklist" label="Rating" required="true">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.account.Rating}" />
+                    </aura:iteration>
+             </lightning:select>
+            
+            <lightning:select aura:id="typePicklist" value="{!v.account.Type}" onchange="{!c.handleType}" name="typePicklist" label="Type" required="true">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!i.key}" selected="{!i.key==v.account.Type}" />
+                    </aura:iteration>
+             </lightning:select>
+            
+            <lightning:input type="url" name="input1" label="Website" required="true" value="{!v.account.Website}"/>
+            <lightning:input type="datetime" name="input1" label="Date Time" required="true" value="{!v.account.DateTime__c}"/>
+            <lightning:input type="checkbox" name="input1" label="Is Active" required="true" value="{!v.account.is_Active__c}"/>
+            
+            <lightning:input name="input1" label="First Name" required="true" value="{!v.account.Name}"/>
+            <lightning:input name="input1" label="Last Name" required="true" value="{!v.account.Name}"/>
+            <lightning:input type="email" name="input1" label="Email" required="true" value="{!v.account.Name}"/>
+            <lightning:input type="tel" name="input1" label="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="true" value="{!v.account.Name}"/>
+            
+            <div class="slds-align_absolute-center" >
+                <lightning:button variant="success" label="Creat Record" onclick="{!c.createAccRelCont}" class="slds-m-left_x-small"></lightning:button>
+                <lightning:button variant="destructive" label="Cancel" title="Destructive action" onclick="{! c.handleClick }"/>
+            </div>
+        </form>
+    </lightning:card>
+</aura:component>

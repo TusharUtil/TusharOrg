@@ -1,0 +1,14 @@
+<aura:component controller="LeadOwnerChange" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}" />
+    <aura:attribute name="selectUserId" type="String" />
+    
+    <div class="slds-m-around_large">
+    <!--  <ui:inputText class="slds-input" value="{!v.objContact.LastName}" label="Last Name"/>-->
+
+      <c:customLookup objectAPIName="User" IconName="standard:User" label="User Name" selectedRecord="{!v.selectUserId}"/>
+      
+<br/> 
+      
+    <button class="slds-utton slds-button_brand" onclick="{!c.changeUserRecord}">Change User</button>    
+  </div>  
+</aura:component>

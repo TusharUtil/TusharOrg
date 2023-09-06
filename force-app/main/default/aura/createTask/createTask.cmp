@@ -1,0 +1,24 @@
+<aura:component controller="DemoLeadController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    
+    <aura:attribute name="taskSubject" type="String" />
+    <aura:attribute name="taskDueDate" type="Date" />
+    <aura:attribute name="taskDescription" type="String" />
+    <lightning:card>
+        <div>
+            <label for="subject">Task Subject:</label>
+            <lightning:input type="text" id="subject" value="{!v.taskSubject}"/>
+        </div>
+        
+        <div>
+            <label for="description">Task Description:</label>
+            <lightning:textarea id="description" value="{!v.taskDescription}" />
+        </div>
+        <div>
+            <lightning:input type="date" label="Due Date" value="{!v.taskDueDate}" />
+        </div>
+        
+        
+        <lightning:button label="Create Task" onclick="{!c.createTask}"/>
+    </lightning:card>
+</aura:component>

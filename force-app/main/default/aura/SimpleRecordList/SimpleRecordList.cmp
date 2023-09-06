@@ -1,0 +1,11 @@
+<aura:component controller="AccountListController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="accountList" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div id="list" class="row slds-has-dividers_around slds-has-block-links_space">
+        <aura:iteration items="{!v.accountList}" var="accRecord">
+            <div class="video-item slds-border_bottom slds-p-around_x-small">
+                <c:AccountRecord accountRecord="{!accountRecord}"/>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

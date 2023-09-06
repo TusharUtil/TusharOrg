@@ -1,0 +1,33 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller="GetAccountController">
+    <aura:handler name="init" value="{!this}" action="{!c.getAccountData}"/>
+    <aura:attribute name="getAccList" type="List"/>
+    <div class="slds">
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="slds-truncate">ID</span></th>
+                    <th scope="col"><span class="slds-truncate">Name</span></th>
+                    <th scope="col"><span class="slds-truncate">Phone</span></th>
+                    <th scope="col"><span class="slds-truncate">Description</span></th>
+                </tr>
+                
+            </thead>
+            <tbody>
+            	<aura:iteration items="{!v.getAccList}" var="acc">
+                	<tr>
+                    	<td>{!acc.Id}</td>
+                    	<td>{!acc.Name}</td>
+                    	<td>{!acc.Phone}</td>
+                    	<td>{!acc.Description}</td>
+                    
+                    </tr>             
+                </aura:iteration>
+            
+            </tbody>
+        </table>
+        
+    </div>
+    
+</aura:component>

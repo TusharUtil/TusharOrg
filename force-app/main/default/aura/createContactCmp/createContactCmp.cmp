@@ -1,0 +1,133 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CreateContactController">
+    <aura:attribute name="ContactListData" type="Contact" default="{'sobjectType':'Contact',
+                                                                   'FirstName':'',
+                                                                   'LastName':'',
+                                                                   'Phone':'',
+                                                                   'Email':'',
+                                                                   'Birthdate':''}"/>
+    
+    <aura:attribute name="ConListToDisplay" type="Account[]"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="isModalOpenSecond" type="boolean" default="false"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.displayContact}"/>
+    
+    <lightning:card title="Create Contact Record"> 
+        <lightning:input name="firstName" label="First Name " value="{!v.ContactListData.FirstName}" />
+        <lightning:input name="lastName" label="Last Name " value="{!v.ContactListData.LastName}" />
+        <lightning:input name="conPhone" label="Phone" value="{!v.ContactListData.Phone}" />
+        <lightning:input name="conEmail" label="Email" value="{!v.ContactListData.Email}" />
+        
+        <!--<lightning:input type="date" name="Birthdate" label="Date of Birth" value="{!v.ContactList.Birthdate}"/>-->
+        <div class="slds-card__footer">
+        <lightning:button variant="brand" label="Save" title="Brand action" onclick="{!c.openModel }" class="slds-float_right"/>
+        
+        <lightning:button variant="destructive" label="Close" title="Brand action" onclick="{!c.openModelTwo }" class="slds-float_left"/>
+            <br></br>
+        </div>
+    </lightning:card>
+    
+    
+    <!-- Modal pop up For Save Button-->
+    
+    <aura:if isTrue="{!v.isModalOpen}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModel }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal/PopUp Box</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p><b>Do You Want To Change The Data</b></p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.CreateContact }"/>
+                    <lightning:button variant="brand"
+                                      label="Yes"
+                                      title="Yes"
+                                      onclick="{!c.closeModel}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    
+     <!-- Modal pop up For Cancel Button -->
+    
+    
+    <aura:if isTrue="{!v.isModalOpenSecond}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModel }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal/PopUp Box</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p><b>Do You Want To Cancel</b></p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    
+                    <lightning:button variant="brand"
+                                      label="OK"
+                                      title="OK"
+                                      onclick="{!c.closeModel}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    
+    
+    
+    <lightning:card title ="Display Record"> 
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+            <thead>
+                <tr >
+                    <th>FirstName </th>
+                    <th>LastName </th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <!--<th>BirthDate</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <!--this is iteration works as for/for-each -->
+                <aura:iteration items="{!v.ConListToDisplay}" var="con">
+                    <tr>
+                        <td>{!con.FirstName}</td>
+                        <td>{!con.LastName}</td>
+                        <td>{!con.Phone}</td>
+                        <td>{!con.Email}</td>
+                        <!--<td>{!con.BirthDate}</td>-->
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </lightning:card>
+    
+</aura:component>

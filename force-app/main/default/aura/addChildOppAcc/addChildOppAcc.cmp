@@ -1,0 +1,57 @@
+<aura:component controller="addChildOppController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="ChildRecordOppList" type="list"/>
+    
+    <div class="slds-m-around--x-small">
+        <div class="slds-grid slds-gride--align-end slds-m-around--x-small">
+            <button class="slds-button slds-button--brand" onclick="{!c.addSelected}">Add Records</button>
+        </div>
+        
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--cell-buffer slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                     <th scope="col">
+                        <div class="slds-truncate" title="Select">Select</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <td>
+                        <div class="slds-truncate" title="Amount">Amount</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="CloseDate">Close Date</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="StageName">StageName</div>
+                    </td>
+				</tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.ChildRecordOppList}" var="opp">
+                    <tr>
+                        <td>
+                            <ui:inputCheckBox aura:id="chkBox" text="{!opp.id}"/>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!opp.Name}">{!opp.Name}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!opp.Amount}">{!opp.Amount}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!opp.CloseDate}">{!opp.CloseDate}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!opp.StageName}">{!opp.StageName}</div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+            
+        </table>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="isChecked" type="Boolean" default="false"/>
+    
+    <aura:handler name="change" value="{!v.isChecked}" action="{!c.handleChkboxChange}"/>
+    
+    <lightning:input type="checkbox" label="Checkbox" checked="{!v.isChecked}" onchange="{!c.handleChkboxChange}"/>
+    
+</aura:component>

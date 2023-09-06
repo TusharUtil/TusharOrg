@@ -1,0 +1,106 @@
+<aura:component controller="addAccountConController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="acc" type="Account"/>
+    <aura:attribute name="name" type="String"/>
+    <aura:attribute name="numEmployee" type="Integer"/>
+    <aura:attribute name="source" type="List" default="[
+                                                       {'label': 'Web', 'value': 'web'},
+                                                       {'label': 'Phone Inquiry', 'value': 'phone inquiry'},
+                                                       {'label': 'Partner Referral', 'value': 'partner referral'},
+                                                       {'label': 'Purchased List', 'value': 'purchased list'},
+                                                       {'label': 'Other', 'value': 'other'},
+                                                       {'label': 'Partner', 'value': 'partner'},
+                                                       {'label': 'Word of mouth', 'value': 'word of mouth'},
+                                                       ]"/>
+    <aura:attribute name="industry" type="List" default="[
+                                                         {'label': 'Agriculture', 'value': 'agriculture'},
+                                                         {'label': 'Apparel', 'value': 'apparel'},
+                                                         {'label': 'Banking', 'value': 'banking'},
+                                                         {'label': 'Biotechnology', 'value': 'biotechnology'},
+                                                         {'label': 'Chemicals', 'value': 'chemicals'},
+                                                         {'label': 'Communications', 'value': 'communications'},
+                                                         {'label': 'Construction', 'value': 'construction'},
+                                                         {'label': 'Consulting', 'value': 'consulting'},
+                                                         {'label': 'Education', 'value': 'education'},
+                                                         {'label': 'Electronics', 'value': 'electronics'},
+                                                         {'label': 'Energy', 'value': 'energy'},
+                                                         {'label': 'Engineering', 'value': 'engineering'},
+                                                         {'label': 'Entertainment', 'value': 'entertainment'},
+                                                         {'label': 'Environmental', 'value': 'environmental'},
+                                                         ]"/>
+    <aura:attribute name="rating" type="List" default="[
+                                                       {'label': 'Hot', 'value': 'hot'},
+                                                       {'label': 'Warm', 'value': 'warm'},
+                                                       {'label': 'Cold', 'value': 'cold'},
+                                                       ]"/>
+    <aura:attribute name="AccType" type="List"  default="[
+                                                      {'label': 'Prospect', 'value': 'Prospect'},
+                                                      {'label': 'Customer - Direct', 'value': 'Customer - Direct'},
+                                                      {'label': 'Customer - Channel', 'value': 'Customer - Channel'},
+                                                      {'label': 'Channel Partner / Reseller', 'value': 'Channel Partner / Reseller'},
+                                                      {'label': 'Installation Partner', 'value': 'Installation Partner'},
+                                                      {'label': 'Technology Partner', 'value': 'Technology Partner'},
+                                                      {'label': 'Other', 'value': 'Other'},
+                                                      ]"/> 
+    <aura:attribute name="website" type="url"/>
+    <aura:attribute name="date" type="DateTime"/>
+    <aura:attribute name="isActive" type="String"/>
+    <aura:attribute name="fname" type="String"/>
+    <aura:attribute name="lname" type="String"/>
+    <aura:attribute name="email" type="String"/>
+    <aura:attribute name="phone" type="String"/>
+    
+    <lightning:card title="Account Details">
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="text" name="name" label="Name" value="{!acc.Name}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="text" name="numEmployee" label="No of Employees" value="{!acc.NumberOfEmployees}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:combobox name="source" label="Account Source" value="{!acc.AccountSource}" options="{!v.source}" onchange="{!c.handleSource}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:combobox name="industry" label="Industry" value="{!acc.Industry}" options="{!v.industry}" onchange="{!c.handleIndustry }" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:combobox name="rating" label="Rating" value="{!acc.Rating}" options="{!v.rating}" onchange="{!c.handleRating}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:combobox name="AccType" label="Type" value="{!acc.Type}" options="{!v.AccType}" onchange="{!c.handleType}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="url" label="Website" value="{!acc.Website}" name="website" required="true" />
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="DateTime" name="Date Time" value="{!acc.DateTime__c}" label="Date Time" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="checkbox" label="is Active" value="{!acc.is_Active__c}" name="is active" required="true"/>
+            </div>   
+        </div>
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input name="fname" label="FirstName" value="{!acc.Name}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input name="lname" label="LastName" value="{!acc.Name}" required="true"/>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="email" name="email" value="{!acc.Name}" label="Email" required="true" />
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input type="tel" name="phone" value="{!acc.Name}" label="Phone" required="true"/>
+            </div>
+        </div>
+        <center>
+            
+            <lightning:button variant="brand" label="Save" title="Save" onclick="{!c.Save}" />
+            <lightning:button variant="destructive" label="Cancel" title="Cancel" onclick="{!c.Cancel}"/>
+            
+        </center>
+       
+        
+    </lightning:card>
+</aura:component>

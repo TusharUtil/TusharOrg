@@ -1,0 +1,64 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" controller="LeadController">
+    <aura:attribute name="options" type="List"/>
+    <aura:attribute name="isSpinner" type="boolean" default="false"/>
+    <aura:attribute name="objLead" type="Lead" default="{'sobjectType':'Lead',
+                                                        'Salutation':'',
+                                                        'FirstName':'',
+                                                        'LastName':'',
+                                                        'Email':'',
+                                                        'Company':'',
+                                                        'Status':'',
+                                                        'Rating':'',
+                                                        'Source':'',
+                                                        'Industry':''
+                                                        }"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="aura:waiting" action="{!c.handleShowSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.handleHideSpinner}"/>
+     
+	
+    <div class="slds-m-around--xx-large">
+    	<div class="container-fluid">
+            <div class="form-group">
+                <ui:inputSelect label="Salutation" class="dynamic" aura:id="InputSalutation" />
+                <!--<lightning:input name="sname" type="text" maxlength="50" label="Salutation" value="{!v.objLead.Salutation}" />-->
+            </div>
+        	<div class="form-group">
+                <lightning:input name="fname" type="text" maxlength="50" label="First Name" value="{!v.objLead.FirstName}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="lname" type="text" maxlength="50" required="true" label="Last Name" value="{!v.objLead.LastName}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="email" type="text" maxlength="50" required="true" label="Email" value="{!v.objLead.Email}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="company" type="text" maxlength="50" required="true" label="Company" value="{!v.objLead.Company}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="phone" type="text" maxlength="50" required="true" label="Phone" value="{!v.objLead.Phone}" />
+            </div>
+            <div class="form-group">
+                <!--<lightning:input name="status" type="text" maxlength="50"  label="Status" value="{!v.objLead.Status}" />-->
+                <ui:inputSelect label="Status" class="dynamic" aura:id="InputStatus" /> 
+            </div>
+            <div class="form-group">
+                <ui:inputSelect label="Rating" class="dynamic" aura:id="InputRating" /> 
+                <!--<lightning:input name="rating" type="text" maxlength="50"  label="Rating" value="{!v.objLead.Rating}" />-->
+            </div>
+             <div class="form-group">
+                 <ui:inputSelect label="Source" class="dynamic" aura:id="InputSource" /> 
+                <!--<lightning:input name="Source" type="text" maxlength="50"  label="Source" value="{!v.objLead.LeadSource}" />-->
+            </div>
+            <div class="form-group">             
+                 <ui:inputSelect label="Industry" class="dynamic" aura:id="InputIndustry" /> 
+               <!-- <lightning:input name="industry" type="text" maxlength="50"  label="Industry" value="{!v.objLead.Industry}" /> -->
+            </div>
+            <br/>
+        	<lightning:button variant="brand" disabled="{!v.isSpinner}" label="{!v.isSpinner == true ? 'Saving...' : 'Save'}" onclick="{!c.handleLeadSave}" />
+            <lightning:button variant="Error" label="Cancel"/>
+        </div>
+    </div>
+</aura:component>

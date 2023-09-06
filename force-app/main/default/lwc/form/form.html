@@ -1,0 +1,68 @@
+<template>
+    <lightning-card title="Repeat Sales Order">
+        <div class="slds-p-bottom_large slds-p-left_large" >
+            <lightning-record-edit-form object-api-name="Account">
+                <lightning-messages></lightning-messages>
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <span>
+                                        <lightning-input-field field-name="Sales Order Name" required> </lightning-input-field>
+                                        <lightning-input-field field-name="Opportunity" required> </lightning-input-field>
+                                        <lightning-input-field field-name="Account" required> </lightning-input-field>
+                                        <lightning-input-field field-name="QC Manager"> </lightning-input-field>
+                                        <lightning-input-field field-name="QC Member"> </lightning-input-field>
+                                        <lightning-input-field field-name="LAB Test"> </lightning-input-field>
+                                        <lightning-input-field field-name="Lot Sampling Details"> </lightning-input-field>
+                                        <lightning-input-field field-name="ETO Lab"> </lightning-input-field>
+                                        <lightning-input-field field-name="Prior Status"> </lightning-input-field>
+                                        <lightning-input-field field-name="Cancellation Reason"> </lightning-input-field>
+                                        <lightning-input-field field-name="Quickbook Sync Status"> </lightning-input-field>
+                                        <lightning-input-field field-name="PO Number"> </lightning-input-field>
+                                        <lightning-input-field field-name="PO Date"> </lightning-input-field>
+                                        <lightning-input-field field-name="PO Url"> </lightning-input-field>
+                                        <lightning-input-field field-name="Freight Charges"> </lightning-input-field>
+                                        <lightning-input-field field-name="Port of Discharge"> </lightning-input-field>
+                                        <lightning-input-field field-name="Disable Validation"> </lightning-input-field>
+
+                                    </span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>
+                                        <lightning-output-field field-name="Record Type"> </lightning-output-field>
+                                        <lightning-input-field field-name="Owner"> </lightning-input-field>
+                                        <lightning-input-field field-name="Expected Date of Dispatch"> </lightning-input-field>
+                                        <lightning-input-field field-name="Estimated Date"> </lightning-input-field>
+                                        <lightning-input-field field-name="Status"> </lightning-input-field>
+                                        <lightning-input-field field-name="Shipping Type"> </lightning-input-field>
+                                        <lightning-input-field field-name="Remarks"> </lightning-input-field>
+                                        <lightning-input-field field-name="Port Of Loading"> </lightning-input-field>
+                                        <lightning-input-field field-name="SAP SO Number"> </lightning-input-field>
+                                        <lightning-input-field field-name="Currency"> </lightning-input-field>
+                                        <lightning-input-field field-name="Document Reference"> </lightning-input-field>
+                                        <lightning-input-field field-name="Doucment thru bank"> </lightning-input-field>
+                                        <lightning-input-field field-name="Inco Terms"> </lightning-input-field>
+                                        <lightning-input-field field-name="QB Edit Sequence"> </lightning-input-field>
+                                        <lightning-input-field field-name="QB LIST ID"> </lightning-input-field>
+                                        
+
+
+                                    </span>
+                                </div>
+                            </div>
+                            
+                    </lightning-layout-item>
+                  </lightning-layout>
+                
+                <lightning-layout>
+                    <div class="slds-align_absolute-center">
+                        <lightning-button variant="success" onclick={handleSubmit} name="submit" label="Submit"></lightning-button>
+                        <lightning-button variant="destructive" onclick={handleCancel} name="cancel" label="Cancel"></lightning-button>
+                        
+                    </div>
+                </lightning-layout>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>
